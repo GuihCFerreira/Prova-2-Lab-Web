@@ -16,7 +16,6 @@ const createAuthorSchema = {
                 .string()
                 .min(10)
                 .max(10)
-                .isoDate()
                 .required(),
     })
 };

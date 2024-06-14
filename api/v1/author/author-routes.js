@@ -1,4 +1,5 @@
 const schema = require('./author-schema');
+const controller = require('./author-controller');
 
 const plugin = {
     name: 'autho-v1-route',
@@ -30,7 +31,7 @@ const plugin = {
                 options: {
                     tags: ['api'],
                     description: 'Create a author',
-                    handler: (request, h) => {return h.response({'authors':'Create a author'}).code(201)},
+                    handler: controller.createAuthor,
                     validate: schema.createAuthorSchema
                 }
             },

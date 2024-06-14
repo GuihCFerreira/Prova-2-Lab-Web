@@ -1,4 +1,5 @@
 const schema = require('./book-schema');
+const controller = require('./book-controller');
 
 const plugin = {
     name: 'book-v1-route',
@@ -31,7 +32,7 @@ const plugin = {
                 options: {
                     tags: ['api'],
                     description: 'Create a book',
-                    handler: (request, h) => {return h.response({'books':'Create a book'}).code(201)},
+                    handler: controller.createBook,
                     validate: schema.createBookSchema
                 }
             }

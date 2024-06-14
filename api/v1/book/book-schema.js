@@ -14,14 +14,13 @@ const createBookSchema = {
                 .required(),
         isbn: Joi
                 .string()
-                .min(13)
-                .max(13)
+                .min(10)
+                .max(20)
                 .required(),
         publishedDate: Joi
                 .string()
                 .min(10)
                 .max(10)
-                .isoDate()
                 .required(),
         authorId: Joi
                 .string()
