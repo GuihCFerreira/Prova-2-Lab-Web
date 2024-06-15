@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../../../config/db');
+const Book = require('../book/book-model');
 
 const Author = database.sequelize.define('Author', {
     id: {
@@ -28,6 +29,7 @@ const Author = database.sequelize.define('Author', {
     timestamps: false,
     tableName: 'tb_autor'
 })
+
 
 module.exports = Author;
 

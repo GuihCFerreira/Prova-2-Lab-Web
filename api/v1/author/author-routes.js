@@ -12,7 +12,7 @@ const plugin = {
                 options: {
                     tags: ['api'],
                     description: 'List of authors',
-                    handler: (request, h) => {return h.response({'authors':'Get all authors'}).code(200)}
+                    handler: controller.getAll
                 }
             },
             {
@@ -21,7 +21,7 @@ const plugin = {
                 options: {
                     tags: ['api'],
                     description: 'Get a specific author',
-                    handler: (request, h) => {return h.response({'authors':'Get specific author'}).code(200)},
+                    handler: controller.getById,
                     validate: schema.getById
                 }
             },

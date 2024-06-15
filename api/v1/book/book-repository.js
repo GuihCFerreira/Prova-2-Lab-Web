@@ -1,16 +1,15 @@
-const bookModel = require('./book-model');
-const Author = require('../author/author-model')
 const {Op} = require('sequelize');
+const {Author, Book} = require('../associations/associations-model')
 
 const save = async (book ) => {
-    return bookModel.create(book);
+    return Book.create(book);
 }
 
 const getById = async (id) => {
-    return bookModel.findOne({
+    return Book.findOne({
         include: [ {
             model: Author,
-            required: false
+            required: true
         }],
         where: {
             id: id
@@ -23,7 +22,7 @@ const getAll = async (filter) => {
     const {title} = filter;
     const authorName = filter['author.name'];
 
-    return bookModel.findAll({
+    return Book.findAll({
         include: [ {
             model: Author,
             required: true

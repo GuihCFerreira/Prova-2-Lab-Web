@@ -43,7 +43,6 @@ const Book = database.sequelize.define('Book', {
     tableName: 'tb_livro'
 })
 
-Book.belongsTo(Author, {foreignKey: 'authorId'})
 
 module.exports = Book;
 
