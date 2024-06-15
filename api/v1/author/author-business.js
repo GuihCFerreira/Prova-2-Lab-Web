@@ -17,4 +17,13 @@ const getAll = async ()=> {
     else return null
 }
 
-module.exports ={save, getById, getAll}
+const deleteAuthor = async(id)=> {
+    const author = await repository.getById(id)
+    if (!author ) return 404
+    
+    const books = await repository.countAthorBooks(id)
+    if(books == 0) return repository.deleteAuthor(id);
+    else return 409;
+}
+
+module.exports ={save, getById, getAll, deleteAuthor}

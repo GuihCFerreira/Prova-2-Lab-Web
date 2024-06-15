@@ -28,4 +28,20 @@ const getAll = async (request, h) => {
     }
 }
 
-module.exports = {createAuthor, getById, getAll}
+const deleteAuthor = async (request, h)=>{
+    try {
+        const author = await business.deleteAuthor(request.params.id)
+        switch(author){
+            case 404:
+                return h.response().code(404)
+            case 409:
+                return h.response({message: "The author has books associated with him"}).code(409)
+            default:
+                return h.response().code(204)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {createAuthor, getById, getAll, deleteAuthor}

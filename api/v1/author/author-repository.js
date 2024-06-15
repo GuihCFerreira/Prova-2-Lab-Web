@@ -27,4 +27,20 @@ const getAll = async ()=> {
     });
 }
 
-module.exports = {save, getById, getAll}
+const deleteAuthor= async(id)=> {
+    return Author.destroy({
+        where: {
+            id: id
+        }
+    })
+}
+
+const countAthorBooks = async (id) => {
+    return Book.count({
+        where:{
+            authorId: id
+        }
+    })
+}
+
+module.exports = {save, getById, getAll, deleteAuthor, countAthorBooks}

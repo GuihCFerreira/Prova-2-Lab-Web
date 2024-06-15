@@ -41,7 +41,7 @@ const plugin = {
                 options: {
                     tags: ['api'],
                     description: 'Delete a specific author',
-                    handler: (request, h) => {return h.code(204)},
+                    handler: controller.deleteAuthor,
                     validate: schema.deleteById
                 }
             }
