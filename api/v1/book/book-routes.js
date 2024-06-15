@@ -12,7 +12,7 @@ const plugin = {
                 options: {
                     tags: ['api'],
                     description: 'List of books',
-                    handler: (request, h) => {return h.response({'books':'Get all books'}).code(200)},
+                    handler: controller.getAll,
                     validate: schema.getBooks
                 }
             },
@@ -22,7 +22,7 @@ const plugin = {
                 options: {
                     tags: ['api'],
                     description: 'Get a specific book',
-                    handler: (request, h) => {return h.response({'books':'Get specific books'}).code(200)},
+                    handler: controller.getById,
                     validate: schema.getById
                 }
             },

@@ -1,11 +1,12 @@
 const Sequelize = require('sequelize');
 const database = require('../../../config/db');
+const Author = require('../author/author-model');
+const { defaultValueSchemable } = require('sequelize/lib/utils');
 
 const Book = database.sequelize.define('Book', {
     id: {
         type: Sequelize.UUID,
-        autoIncrement: true,
-        allowNull: true,
+        defaultValue: Sequelize.UUIDV1,
         primaryKey: true,
         field: 'codigo'
     },
@@ -33,7 +34,7 @@ const Book = database.sequelize.define('Book', {
         type: Sequelize.UUID,
         field: 'cod_autor',
         references: {
-            model: 'author',
+            model: 'Author',
             key: 'id'
         }
     }
@@ -41,6 +42,8 @@ const Book = database.sequelize.define('Book', {
     timestamps: false,
     tableName: 'tb_livro'
 })
+
+Book.belongsTo(Author, {foreignKey: 'authorId'})
 
 module.exports = Book;
 
